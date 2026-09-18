@@ -1,0 +1,9 @@
+@import './reset.css';
+@import './colors.css';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+}
