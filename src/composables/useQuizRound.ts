@@ -1,4 +1,4 @@
-import {reactive, ref} from 'vue'
+import {computed, reactive, ref} from 'vue'
 import type {Team} from '@/types/models.ts'
 
 export const POINTS = {
@@ -18,6 +18,9 @@ export function useQuizRound() {
 
     const titleValidatedBy = ref<TeamId | null>(null)
     const singerValidatedBy = ref<TeamId | null>(null)
+
+    const isTitleValidated = computed(() => titleValidatedBy.value !== null)
+    const isSingerValidated = computed(() => singerValidatedBy.value !== null)
 
     function getTeam(teamId: TeamId): Team {
         return teamId === 'A' ? teamA : teamB
@@ -71,5 +74,7 @@ export function useQuizRound() {
         validateTitle, validateSinger, resetRound,
         canValidateTitle: (teamId: TeamId) => canValidate(titleValidatedBy, teamId),
         canValidateSinger: (teamId: TeamId) => canValidate(singerValidatedBy, teamId),
+        isTitleValidated,
+        isSingerValidated
     }
 }
