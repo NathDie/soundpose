@@ -1,0 +1,52 @@
+@import './reset.css';
+@import './colors.css';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    background: radial-gradient(120% 120% at 15% 0%, var(--color-brilliant-white) 0%, var(--color-carte-blanche) 40%, var(--color-ghost-white) 100%);
+}
+
+body #app {
+    position: relative;
+    min-height: 100dvh;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 1024px) {
+    max-height: 100dvh;
+}
+
+body #app::before, body #app::after {
+    content: '';
+    position: absolute;
+    width: 54rem;
+    height: 54rem;
+    z-index: 0;
+    pointer-events: none;
+}
+
+body #app::before {
+    top: 1rem;
+    left: 1rem;
+    background: radial-gradient(
+            closest-side,
+            var(--color-glow-blue),
+            transparent
+    );
+}
+
+body #app::after {
+    bottom: 1rem;
+    right: 1rem;
+    background: radial-gradient(closest-side, var(--color-glow-pink), transparent);
+}
+
+body #app > * {
+    position: relative;
+    z-index: 1;
+}
