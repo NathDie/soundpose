@@ -4,3 +4,10 @@ export interface Team {
     title_validated: boolean
     singer_validated: boolean
 }
+
+export interface Song {
+    id: number
+    title: string
+    author: string
+    year: string
+}
