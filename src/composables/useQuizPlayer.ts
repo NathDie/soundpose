@@ -1,17 +1,6 @@
 import {ref, computed, onUnmounted} from 'vue'
 import type {Song} from '@/types/models.ts'
 
-function shuffle<T>(array: T[]): T[] {
-    const result = [...array]
-    for (let i = result.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1))
-        const temp = result[i]!
-        result[i] = result[j]!
-        result[j] = temp
-    }
-    return result
-}
-
 export function useQuizPlayer() {
     const songs = ref<Song[]>([])
     const currentIndex = ref(0)
@@ -52,7 +41,7 @@ export function useQuizPlayer() {
         try {
             const response = await fetch('/quiz/song.json')
             if (!response.ok) throw new Error('Impossible de charger la playlist')
-            songs.value = shuffle(await response.json())
+            songs.value = await response.json()
             currentIndex.value = 0
             loadCurrentTrack()
         } catch (e) {
